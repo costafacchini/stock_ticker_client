@@ -1,0 +1,20 @@
+.report-container {
+  display: grid;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+.report-container-header {
+  font-weight: bold;
+  background-color: gray;
+  color: aliceblue;
+}
+
+.report-container-cell {
+  padding: 8px;
+  border: 1px solid #dddddd;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
