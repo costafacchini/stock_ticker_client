@@ -1,25 +1,21 @@
 import { useState } from 'react'
 import StockReport from './components/StockReport'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchStockTicker, selectReport } from './appSlice'
 import './index.css'
 
 function App() {
   const [searchStockTicker, setSearchStockTicker] = useState('')
-  const [data, setData] = useState([])
+  const dispatch = useDispatch()
+  const stockReportData = useSelector(selectReport)
 
   const handleInputChange = (event) => {
     setSearchStockTicker(event.target.value.toUpperCase())
   }
 
-  const fetchStockTickerReport = async () => {
-    const response = await window.fetch(`http://127.0.0.1:3000/v1/stock_report/${searchStockTicker}`)
-    return await response.json()
-  }
-
   const handleSearch = () => {
     if (searchStockTicker !== '') {
-      fetchStockTickerReport().then(data => {
-        setData(data.report)
-      })
+      dispatch(fetchStockTicker(searchStockTicker))
     }
   }
 
@@ -36,7 +32,7 @@ function App() {
           />
         <button className="search-btn" onClick={handleSearch}>Search</button>
       </div>
-      <StockReport data={data} />
+      <StockReport data={stockReportData} />
     </div>
   )
 }
