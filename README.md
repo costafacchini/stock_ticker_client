@@ -13,6 +13,10 @@
 $ yarn dev
 ```
 
+You may need to change the server url configuration in the file `src/screens/App/index.jsx`
+
+This is the current configuration `http://127.0.0.1:3000/v1/stock_report/`
+
 ## Troubleshooting
 
 If you run the `yarn dev` command and the error `vite: command not found` appears, to solve the problem you need to run the commands below:
