@@ -23,18 +23,17 @@ function App() {
   }
 
   return (
-    <>
-      <div className="app-container">
-        <div>
-          <label>Enter a Stock Ticker</label>
-          <input
-            type="text"
-            value={searchStockTicker}
-            onChange={handleInputChange}
-            placeholder="Enter Ticker Symbol..."
-            />
-          <button onClick={handleSearch}>Search</button>
-        </div>
+    <div className="app-container">
+      <div className="search-container">
+        <label>Enter a Stock Ticker</label>
+        <input
+          className="search-input"
+          type="text"
+          value={searchStockTicker}
+          onChange={handleInputChange}
+          placeholder="Enter Ticker Symbol..."
+          />
+        <button className="search-btn" onClick={handleSearch}>Search</button>
       </div>
       <div className="report-container">
         <table>
@@ -58,7 +57,7 @@ function App() {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   )
 }
 
