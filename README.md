@@ -25,6 +25,12 @@ If you run the `yarn dev` command and the error `vite: command not found` appear
 # It is necessary to configure the node environment for development
 $ export NODE_ENV=development
 
+# Check again to confirm that NODE_ENV has been set
+$ echo $NODE_ENV
+
+# Should return
+development
+
 # and run the yarn again to install the dev dependencies
-$ yarn
+$ yarn install
 ```
