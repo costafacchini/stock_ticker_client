@@ -13,7 +13,7 @@
 $ yarn dev
 ```
 
-You may need to change the server url configuration in the file `src/screens/App/index.jsx`
+You may need to change the server url configuration in the file `src/screens/App/appAPI.js`
 
 This is the current configuration `http://127.0.0.1:3000/v1/stock_report/`
 
