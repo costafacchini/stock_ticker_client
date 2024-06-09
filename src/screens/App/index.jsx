@@ -10,7 +10,7 @@ function App() {
   const stockReportData = useSelector(selectReport)
 
   const handleInputChange = (event) => {
-    setSearchStockTicker(event.target.value.toUpperCase())
+    setSearchStockTicker(event.target.value)
   }
 
   const handleSearch = () => {
