@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import StockReport from './components/StockReport'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchStockTicker, selectReport } from './appSlice'
+import { fetchStockTicker, selectReport, selectError } from './appSlice'
 import './index.css'
 
 function App() {
   const [searchStockTicker, setSearchStockTicker] = useState('')
   const dispatch = useDispatch()
   const stockReportData = useSelector(selectReport)
+  const error = useSelector(selectError)
 
   const handleInputChange = (event) => {
     setSearchStockTicker(event.target.value)
@@ -32,6 +33,7 @@ function App() {
           />
         <button className="search-btn" onClick={handleSearch}>Search</button>
       </div>
+      {error && <div className="error">{error}</div>}
       <StockReport data={stockReportData} />
     </div>
   )

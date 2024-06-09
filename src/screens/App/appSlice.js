@@ -3,6 +3,7 @@ import { fetchStockTickerReport } from './appAPI'
 
 const initialState = {
   report: [],
+  error: null,
   status: 'idle',
 }
 
@@ -26,10 +27,17 @@ export const appSlice = createSlice({
       .addCase(fetchStockTicker.fulfilled, (state, action) => {
         state.status = 'idle'
         state.report = action.payload.report;
+        state.error = null
+      })
+      .addCase(fetchStockTicker.rejected, (state, action) => {
+        state.status = 'idle'
+        state.error = action.error.message
+        state.report = [];
       })
   },
 })
 
 export const selectReport = (state) => state.app.report
+export const selectError = (state) => state.app.error
 
 export default appSlice.reducer
