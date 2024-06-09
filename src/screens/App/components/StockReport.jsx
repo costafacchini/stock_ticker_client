@@ -1,5 +1,15 @@
 import './index.css'
 
+const moneyFormat = (value) => {
+  const USDollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+  return USDollar.format(value)
+}
+
+const numberFormat = (value) => {
+  const Number = new Intl.NumberFormat('en-US', { style: 'decimal', minimumFractionDigits: 2 })
+  return Number.format(value)
+}
+
 function StockReport({ data }) {
   return (
     <div className="report-container">
@@ -16,9 +26,9 @@ function StockReport({ data }) {
           {data && data.map((item, index) => (
             <tr key={index}>
               <td className="report-container-cell">{item.label}</td>
-              <td className="report-container-cell">{item.maximum}</td>
-              <td className="report-container-cell">{item.minimum}</td>
-              <td className="report-container-cell">{item.average}</td>
+              <td className="report-container-cell">{item.format_to_money ? moneyFormat(item.maximum) : numberFormat(item.maximum)}</td>
+              <td className="report-container-cell">{item.format_to_money ? moneyFormat(item.minimum) : numberFormat(item.minimum)}</td>
+              <td className="report-container-cell">{item.format_to_money ? moneyFormat(item.average) : numberFormat(item.average)}</td>
             </tr>
           ))}
         </tbody>
